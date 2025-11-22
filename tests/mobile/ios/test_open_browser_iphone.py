@@ -1,5 +1,8 @@
+import allure
 from selene import browser
 
 
 def test_open_browser_iphone():
-    browser.open("https://www.yandex.ru")
+
+    with allure.step("Открытие Яндекс в браузере Safari на iPhone"):
+        browser.open("https://www.yandex.ru")

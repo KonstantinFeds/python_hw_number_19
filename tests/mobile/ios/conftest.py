@@ -1,4 +1,6 @@
 import os
+
+import allure
 import pytest
 from dotenv import load_dotenv
 from selenium.webdriver import Remote
@@ -16,25 +18,27 @@ URL = os.getenv("URL")
 @pytest.fixture(scope="function", autouse=True)
 def macos_management():
 
-    options = ChromeOptions()
+    with allure.step("Настройка конфигураций под IOS для BrowserStack "):
 
-    capabilities = {
-        "browserName": "Safari",
-        "browserVersion": "latest",
-        "platformName": "ios",
-        "deviceName": "iPhone 14 Pro Max",
-        "platformVersion": "16",
-        "bstack:options": {
-            "projectName": "IOS Safari tests",
-            "buildName": "browserstack-build-safari",
-            "userName": USER_NAME_IOS,
-            "accessKey": ACCESS_KEY_IOS,
-            "osVersion": "16",
+        options = ChromeOptions()
+
+        capabilities = {
+            "browserName": "Safari",
+            "browserVersion": "latest",
+            "platformName": "ios",
             "deviceName": "iPhone 14 Pro Max",
-            "realMobile": "true",
-            "local": "false",
-        },
-    }
+            "platformVersion": "16",
+            "bstack:options": {
+                "projectName": "IOS Safari tests",
+                "buildName": "browserstack-build-safari",
+                "userName": USER_NAME_IOS,
+                "accessKey": ACCESS_KEY_IOS,
+                "osVersion": "16",
+                "deviceName": "iPhone 14 Pro Max",
+                "realMobile": "true",
+                "local": "false",
+            },
+        }
 
     # Добавляем capabilities в options
     for key, value in capabilities.items():

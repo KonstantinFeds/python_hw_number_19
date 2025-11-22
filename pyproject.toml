@@ -12,6 +12,7 @@ selene = "2.0.0rc9"
 pytest = "8.4.2"
 appium-python-client = "^5.2.4"
 python-dotenv = "^1.2.1"
+requests = "^2.32.5"
 
 
 [build-system]
