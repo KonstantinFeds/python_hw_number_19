@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "python-hw-number-19"
+version = "0.1.0"
+description = ""
+authors = ["konstatin fedoseev <kons.fed.99@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.13"
+allure-pytest = "2.15.0"
+selene = "2.0.0rc9"
+pytest = "8.4.2"
+appium-python-client = "^5.2.4"
+python-dotenv = "^1.2.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[dependency-groups]
+dev = [
+    "black (>=25.11.0,<26.0.0)"
+
+]
