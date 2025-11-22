@@ -53,7 +53,7 @@ def macos_management():
 
     session_id = browser.driver.session_id
 
-    with allure.step('Закрытие сессии'):
+    with allure.step("Закрытие сессии"):
         browser.quit()
 
     attach_bstack_video_ios(session_id)

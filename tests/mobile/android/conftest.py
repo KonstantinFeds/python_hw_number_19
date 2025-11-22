@@ -41,17 +41,11 @@ def mobile_management():
 
     browser.config.driver = webdriver.Remote(URL, options=options)
 
-
     yield
 
     session_id = browser.driver.session_id
 
-    with allure.step('Закрытие сессии'):
+    with allure.step("Закрытие сессии"):
         browser.quit()
 
     attach_bstack_video_android(session_id)
-
-
-
-
-
