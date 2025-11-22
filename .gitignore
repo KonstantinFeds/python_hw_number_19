@@ -1,3 +1,7 @@
+#Allure-report
+tests/mobile/android/reports/
+tests/mobile/ios/reports
+
 .env
 # Byte-compiled / optimized / DLL files
 __pycache__/

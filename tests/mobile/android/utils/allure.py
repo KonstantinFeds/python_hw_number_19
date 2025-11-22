@@ -3,7 +3,6 @@ import os
 import allure
 from dotenv import load_dotenv
 
-import config
 
 load_dotenv()
 
@@ -19,7 +18,6 @@ def attach_bstack_video_android(session_id):
         f'https://api.browserstack.com/app-automate/sessions/{session_id}.json',
         auth=(USER_NAME_ANDROID, ACCESS_KEY_ANDROID),
     ).json()
-    #print(bstack_session)
     video_url = bstack_session['automation_session']['video_url']
 
     allure.attach(

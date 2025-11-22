@@ -1,13 +1,11 @@
 import os
-
 import allure
 import pytest
 from appium import webdriver
 from appium.options.android import UiAutomator2Options
 from dotenv import load_dotenv
 from selene import browser
-
-from tests.mobile.utils.allure import attach_bstack_video_android
+from tests.mobile.android.utils.allure import attach_bstack_video_android
 
 load_dotenv()
 
@@ -35,8 +33,6 @@ def mobile_management():
                     "buildName": "browserstack-build-1",
                     "sessionName": "BStack first_test",
                     # Set your access credentials
-                    # 'userName': config.bstack_userName_android,
-                    # 'accessKey': config.bstack_accessKey_android,
                     "userName": USER_NAME_ANDROID,
                     "accessKey": ACCESS_KEY_ANDROID,
                 },
@@ -50,7 +46,7 @@ def mobile_management():
 
     session_id = browser.driver.session_id
 
-    with allure.step('tear down app session'):
+    with allure.step('Закрытие сессии'):
         browser.quit()
 
     attach_bstack_video_android(session_id)

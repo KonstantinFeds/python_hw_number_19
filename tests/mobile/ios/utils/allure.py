@@ -1,0 +1,36 @@
+import os
+import allure
+from dotenv import load_dotenv
+
+load_dotenv()
+
+USER_NAME_IOS = os.getenv("USER_NAME_IOS")
+ACCESS_KEY_IOS = os.getenv("ACCESS_KEY_IOS")
+URL = os.getenv("URL")
+
+
+def attach_bstack_video_ios(session_id):
+    import requests
+
+    bstack_session = requests.get(
+        f'https://api.browserstack.com/automate/sessions/{session_id}.json',
+        auth=(USER_NAME_IOS, ACCESS_KEY_IOS),
+    ).json()
+
+    video_url = bstack_session['automation_session']['video_url']
+
+    allure.attach(
+        '<html><body>'
+        '<video width="100%" height="100%" controls autoplay>'
+        f'<source src="{video_url}" type="video/mp4">'
+        '</video>'
+        '</body></html>',
+        name='video recording',
+        attachment_type=allure.attachment_type.HTML,
+    )
+
+
+
+
+
+

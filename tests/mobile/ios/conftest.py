@@ -1,11 +1,11 @@
 import os
-
 import allure
 import pytest
 from dotenv import load_dotenv
 from selenium.webdriver import Remote
 from selene import browser
 from selenium.webdriver.chrome.options import Options as ChromeOptions
+from tests.mobile.ios.utils.allure import attach_bstack_video_ios
 
 
 load_dotenv()
@@ -51,4 +51,9 @@ def macos_management():
 
     yield
 
-    browser.quit()
+    session_id = browser.driver.session_id
+
+    with allure.step('Закрытие сессии'):
+        browser.quit()
+
+    attach_bstack_video_ios(session_id)
